@@ -1,5 +1,4 @@
-from tkinter import *
-from tkinter.ttk import *
+from tkinter import Tk, Frame, Button, Label, Text
 
 root = Tk()
 root.resizable(False, False)
@@ -71,5 +70,8 @@ bt_edit.config(width = 15)
 bt_guardar = Button(frame, text = 'GUARDAR')
 bt_guardar.config(width = 15)
 bt_guardar.grid(row = 8, column = 1, pady = 12, padx = 12, ipady = 5, ipadx = 5, sticky = 'e' )
+
+
+
 
 root.mainloop()
