@@ -1,7 +1,7 @@
 from tkinter import Tk, Frame
-import top_buttons as top
-import middle_entrys as middle
-import down_interface as down 
+import interface_top as top
+import interface_middle as middle
+import interface_down as down 
 
 
 root = Tk()

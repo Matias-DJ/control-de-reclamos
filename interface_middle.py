@@ -1,9 +1,18 @@
 from tkinter import Entry, Text
 
+et_idTicket = 0
+et_fecha = 0
+et_recurrente = 0
+et_cIdentidad = 0
+et_tipoReclamo = 0
+tx_reclamo = 0
+
 def imprimir():
     print('Funciona!')
 
 def createMiddleInterface(frame):
+    global et_idTicket, et_fecha, et_recurrente
+    global et_cIdentidad, et_tipoReclamo, tx_reclamo
     pady = 3
 
     et_idTicket = Entry(frame)

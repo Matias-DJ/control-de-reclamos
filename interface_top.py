@@ -1,5 +1,7 @@
 #Crear botones  y titulo de la parte superior
 from tkinter import Label, Button
+from funciones_datos import *
+import interface_middle as middle
 
 def createTopInterface(frame):
     #Titulo Superior
@@ -9,11 +11,12 @@ def createTopInterface(frame):
 
 
     #Botones de arriba
-    bt_nuevoTicket = Button(frame, text = 'NUEVO TICKET DE \nRECLAMO')
+    frame_nuevo = frame
+    bt_nuevoTicket = Button(frame, text = 'NUEVO TICKET DE \nRECLAMO',command = lambda:middle.createMiddleInterface(frame))
     bt_nuevoTicket.grid(row = 1, column = 0, pady = 12, padx = 12, ipady = 5, ipadx = 5, sticky = 'w') 
     bt_nuevoTicket.config(width = 15)
 
-    bt_buscar = Button(frame, text = 'BUSCAR TICKET DE \nRECLAMO')
+    bt_buscar = Button(frame, text = 'BUSCAR TICKET DE \nRECLAMO', command = lambda:recolectarDatos('buscar'))
     bt_buscar.grid(row = 1, column = 1, pady = 12, padx = 12, ipady = 5, ipadx = 5, sticky = 'e')
     bt_buscar.config(width = 15)
 
