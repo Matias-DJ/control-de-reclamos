@@ -22,20 +22,18 @@ except sqlite3.OperationalError:
 
 
 def guardarReclamo(tupla_datos):
-    print(tupla_datos)
-    cursor.execute('INSERT INTO RECLAMOS VALUES (?,?,?,?,?,?)', tupla_datos)
+    cursor.execute('''
+        INSERT INTO RECLAMOS VALUES (?,?,?,?,?,?)''', 
+        tupla_datos
+        )
     conexion.commit()
 
-
-
-
+#################################
 
 def leerDatos(ticket):
 
     cursor.execute(f"SELECT * FROM RECLAMOS WHERE TICKET = '{ticket}'")
     datos_leidos = cursor.fetchall()
-    print(datos_leidos)
-    print(len(datos_leidos))
 
     if len(datos_leidos) == 0 :
         messagebox.showwarning('Ticket no encontrado', 'El ticket ingresado no existe')    
@@ -51,6 +49,8 @@ def leerDatos(ticket):
     middle.et_tipoReclamo.insert(0, datos_leidos[0][4])
     middle.tx_reclamo.insert('1.0', datos_leidos[0][5])
     
+################################
+
 def editarTicket(tupla_datos):
     cursor.execute(f'''UPDATE RECLAMOS
         SET FECHA = "{tupla_datos[1]}",

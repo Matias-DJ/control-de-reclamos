@@ -14,17 +14,24 @@ def recolectarDatos(funcion_bbdd):
     tipo_reclamo = middle.et_tipoReclamo.get()
     reclamo = middle.tx_reclamo.get('1.0', 'end')
 
-    coleccion_datos = (ticket, fecha, recurrente, cedula, tipo_reclamo, reclamo)
+    coleccion_datos = (
+        ticket, 
+        fecha, 
+        recurrente, 
+        cedula, 
+        tipo_reclamo, 
+        reclamo
+        )
 
     #elegir la siguiente funcion a realizar
+    #segun el boton presionado
+
     if funcion_bbdd == 'crear':
         bbdd.guardarReclamo(coleccion_datos)
     elif funcion_bbdd == 'buscar':
         bbdd.leerDatos(coleccion_datos[0])
     elif funcion_bbdd == 'actualizar':
         bbdd.editarTicket(coleccion_datos)
-
-
 
 
 def limpiar_campos():
