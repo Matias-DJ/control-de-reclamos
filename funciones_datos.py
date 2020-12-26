@@ -7,7 +7,6 @@ coleccion_datos = ()
 def recolectarDatos(funcion_bbdd):
     global coleccion_datos
 
-    ticket = middle.et_idTicket.get()
     fecha = middle.et_fecha.get()
     recurrente = middle.et_recurrente.get()
     cedula = middle.et_cIdentidad.get()
@@ -15,7 +14,6 @@ def recolectarDatos(funcion_bbdd):
     reclamo = middle.tx_reclamo.get('1.0', 'end')
 
     coleccion_datos = (
-        ticket, 
         fecha, 
         recurrente, 
         cedula, 

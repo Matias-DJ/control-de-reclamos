@@ -1,4 +1,4 @@
-from tkinter import Entry, Text
+from tkinter import Entry, Text, Scrollbar
 
 et_idTicket = 0
 et_fecha = 0
@@ -7,8 +7,6 @@ et_cIdentidad = 0
 et_tipoReclamo = 0
 tx_reclamo = 0
 
-def imprimir():
-    print('Funciona!')
 
 def createMiddleInterface(frame):
     global et_idTicket, et_fecha, et_recurrente
@@ -19,7 +17,7 @@ def createMiddleInterface(frame):
         frame
         )
     et_idTicket.grid(
-    row = 3, 
+    row = 4, 
     column = 0, 
     pady = pady, 
     padx = 12, 
@@ -27,14 +25,15 @@ def createMiddleInterface(frame):
     ipadx = 5, 
     sticky = 'w'
     )
-    et_idTicket.insert(0, 'ID_DEL_TICKET')
+    et_idTicket.configure(state = 'disabled')
+    #et_idTicket.insert(0, 'ID_DEL_TICKET')
 
 
     et_fecha = Entry(
         frame
         )
     et_fecha.grid(
-        row = 4, 
+        row = 5, 
         column = 0, 
         pady = pady, 
         padx = 12, 
@@ -50,7 +49,7 @@ def createMiddleInterface(frame):
         width = 40
         )
     et_recurrente.grid(
-        row = 5, 
+        row = 6, 
         column = 0, 
         pady = pady, 
         padx = 12, 
@@ -65,7 +64,7 @@ def createMiddleInterface(frame):
         frame
         )
     et_cIdentidad.grid(
-        row = 5, 
+        row = 6, 
         column = 1, 
         pady = pady, 
         padx = 12, 
@@ -81,7 +80,7 @@ def createMiddleInterface(frame):
         width = 40
         )
     et_tipoReclamo.grid(
-        row = 6, 
+        row = 7, 
         column = 0, 
         pady = pady, 
         padx = 12, 
@@ -98,7 +97,7 @@ def createMiddleInterface(frame):
         height = 12
         )
     tx_reclamo.grid(
-        row = 7, 
+        row = 8,
         column = 0, 
         pady = 12, 
         padx = 12, 
@@ -106,3 +105,16 @@ def createMiddleInterface(frame):
         ipadx = 5, 
         sticky = 'w')
     tx_reclamo.insert('1.0', 'RECLAMO')
+    
+    scroll = Scrollbar(
+        frame, 
+        command = tx_reclamo.yview
+        )
+    scroll.grid(
+        row = 8, 
+        column = 2, 
+        sticky = 'nsew', 
+        ipadx = 3,
+        padx = 0
+        )
+    tx_reclamo.config(yscrollcommand = scroll.set)

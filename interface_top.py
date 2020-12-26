@@ -1,9 +1,28 @@
 #Crear botones  y titulo de la parte superior
-from tkinter import Label, Button
-from funciones_datos import *
+from tkinter import Label, Button, StringVar
+import bbdd
 import interface_middle as middle
+ultimo_ticket = ''
+frame = None 
 
-def createTopInterface(frame):
+def actualizarUltimoTicket():
+    global ultimo_ticket, frame
+    bbdd.cursor.execute(f"SELECT * FROM RECLAMOS")
+    lectura = bbdd.cursor.fetchall()
+    
+    #print(datos_leidos)
+
+    ultimo_ticket = 'Ultimo ticket ingresado: ' + str(lectura[-1][0])
+    
+    mostrarUltimoTicket(frame)
+
+
+
+def createTopInterface(raiz):
+    global frame
+    frame = raiz
+    #guardar el frame para utilizar en otras funciones
+
     #Titulo Superior
     lb_titulo = Label(
         frame, 
@@ -26,7 +45,7 @@ def createTopInterface(frame):
     bt_nuevoTicket = Button(
         frame, 
         text = 'NUEVO TICKET DE \nRECLAMO',
-        command = lambda:middle.createMiddleInterface(frame))
+        command = actualizarUltimoTicket)
     bt_nuevoTicket.grid(
         row = 1, 
         column = 0, 
@@ -59,7 +78,7 @@ def createTopInterface(frame):
 
 
     #linea separadora
-    lineas = '----------------------------------------------------------------------------------------------------------------'
+    lineas = '    ----------------------------------------------------------------------------------------------------------'
     lb_separacion = Label(
         frame, 
         text = lineas)
@@ -69,4 +88,19 @@ def createTopInterface(frame):
         columnspan = 2, 
         pady = 9, 
         sticky = 'w'
+        ) 
+
+
+def mostrarUltimoTicket(raiz):
+    lb_info = Label(
+        raiz, 
+        text = ultimo_ticket
+        )
+    lb_info.grid(
+        row = 3,
+        column = 0,
+        sticky = 'w'
+        )
+    lb_info.config(
+        font = ('Arial', 10)
         ) 

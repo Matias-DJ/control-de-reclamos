@@ -9,7 +9,7 @@ def createDownInterface(frame):
         command = lambda:recolectarDatos('actualizar')
         )
     bt_edit.grid(
-        row = 8, 
+        row = 9, 
         column = 0, 
         pady = 12, 
         padx = 12, 
@@ -26,7 +26,7 @@ def createDownInterface(frame):
         command = lambda:recolectarDatos('crear')
         )
     bt_guardar.grid(
-        row = 8, 
+        row = 9, 
         column = 1, 
         pady = 12, 
         padx = 12, 

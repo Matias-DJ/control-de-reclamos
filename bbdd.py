@@ -7,23 +7,22 @@ conexion = sqlite3.connect('Reclamo')
 cursor = conexion.cursor()
 
 try:
-    cursor.execute('''CREATE TABLE RECLAMOS
-        (
-        TICKET VARCHAR(20) PRIMARY KEY,
+    cursor.execute('''
+        CREATE TABLE RECLAMOS(
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
         FECHA VARCHAR(12),
         NOMBRE_APELLIDO VARCHAR(50), 
         CEDULA INTEGER,
         TIPO_RECLAMO VARCHAR(20),
-        RECLAMO VARCHAR(600)
-        )'''
-        )
+        RECLAMO VARCHAR(600))
+        ''')
 except sqlite3.OperationalError:
     pass
 
 
 def guardarReclamo(tupla_datos):
     cursor.execute('''
-        INSERT INTO RECLAMOS VALUES (?,?,?,?,?,?)''', 
+        INSERT INTO RECLAMOS VALUES (NULL,?,?,?,?,?)''', 
         tupla_datos
         )
     conexion.commit()
