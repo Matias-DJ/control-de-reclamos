@@ -7,6 +7,7 @@ coleccion_datos = ()
 def recolectarDatos(funcion_bbdd):
     global coleccion_datos
 
+    ticket = middle.et_idTicket.get()
     fecha = middle.et_fecha.get()
     recurrente = middle.et_recurrente.get()
     cedula = middle.et_cIdentidad.get()
@@ -14,6 +15,7 @@ def recolectarDatos(funcion_bbdd):
     reclamo = middle.tx_reclamo.get('1.0', 'end')
 
     coleccion_datos = (
+        ticket,
         fecha, 
         recurrente, 
         cedula, 
@@ -21,14 +23,17 @@ def recolectarDatos(funcion_bbdd):
         reclamo
         )
 
-    #elegir la siguiente funcion a realizar
-    #segun el boton presionado
+    '''elegir la siguiente funcion a realizar
+    segun el boton presionado'''
 
     if funcion_bbdd == 'crear':
         bbdd.guardarReclamo(coleccion_datos)
+
     elif funcion_bbdd == 'buscar':
-        bbdd.leerDatos(coleccion_datos[0])
+        bbdd.leerDatos(coleccion_datos)
+
     elif funcion_bbdd == 'actualizar':
+        
         bbdd.editarTicket(coleccion_datos)
 
 

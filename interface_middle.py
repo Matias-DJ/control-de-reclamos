@@ -1,4 +1,5 @@
 from tkinter import Entry, Text, Scrollbar
+from datetime import date
 
 et_idTicket = 0
 et_fecha = 0
@@ -25,8 +26,7 @@ def createMiddleInterface(frame):
     ipadx = 5, 
     sticky = 'w'
     )
-    et_idTicket.configure(state = 'disabled')
-    #et_idTicket.insert(0, 'ID_DEL_TICKET')
+    et_idTicket.insert(0, 'ID_DEL_TICKET')
 
 
     et_fecha = Entry(
@@ -41,8 +41,8 @@ def createMiddleInterface(frame):
         ipadx = 5, 
         sticky = 'w'
         )
-    et_fecha.insert(0, 'FECHA')
-
+    et_fecha.insert(0, date.today())
+    et_fecha.configure(state = 'disabled')
 
     et_recurrente = Entry(
         frame, 
