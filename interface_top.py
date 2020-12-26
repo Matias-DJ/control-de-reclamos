@@ -1,8 +1,10 @@
 #Crear botones  y titulo de la parte superior
 from tkinter import Label, Button, StringVar
 from funciones_datos import *
+from datetime import date
 import bbdd
 import interface_middle as middle
+
 
 ultimo_ticket = ''
 frame = None 
@@ -14,11 +16,17 @@ def actualizarUltimoTicket():
     
     #print(datos_leidos)
 
-    ultimo_ticket = 'Ultimo ticket ingresado: ' + str(lectura[-1][1])
+    ultimo_ticket = 'Ultimo ticket ingresado: ' + str(lectura[-1][1])    
+    mostrarUltimoTicket(frame) #Actualizar el texto en pantalla
+
+    limpiar_campos()
+    middle.et_idTicket.insert(0, 'ID_DEL_TICKET')
+    middle.et_fecha.insert(0, date.today())
+    middle.et_recurrente.insert(0, 'NOMBRE_Y_APELLIDO')
+    middle.et_cIdentidad.insert(0, 'CEDULA_DE_IDENTIDAD')
+    middle.et_tipoReclamo.insert(0, 'TIPO_DE_RECLAMO')
+    middle.tx_reclamo.insert('1.0', 'RECLAMO')
     
-    mostrarUltimoTicket(frame)
-
-
 
 def createTopInterface(raiz):
     global frame

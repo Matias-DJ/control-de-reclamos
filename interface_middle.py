@@ -57,7 +57,7 @@ def createMiddleInterface(frame):
         ipadx = 5, 
         sticky = 'w'
         )
-    et_recurrente.insert(0, 'RECURRENTE(NOMBRE_Y_APELLIDO)')
+    et_recurrente.insert(0, 'NOMBRE_Y_APELLIDO')
 
 
     et_cIdentidad = Entry(

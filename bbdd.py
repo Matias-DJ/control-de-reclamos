@@ -22,12 +22,17 @@ except sqlite3.OperationalError:
 
 ################################
 def guardarReclamo(tupla_datos):
-    cursor.execute('''
-        INSERT INTO RECLAMOS VALUES (NULL,?,?,?,?,?,?)''', 
-        tupla_datos
-        )
-    conexion.commit()
+    try:
+        cursor.execute('''
+            INSERT INTO RECLAMOS VALUES (NULL,?,?,?,?,?,?)''', 
+            tupla_datos 
+            )
+        conexion.commit()
 
+        messagebox.showinfo('Anota tu ticket', '''Por favor anota el ID de tu ticket para 
+poder consultarlo en otro momento''')
+    except sqlite3.IntegrityError:
+        messagebox.showwarning('ID existente', 'El ID ingresado ya existe')
 #################################
 identificador = None
 def obtenerID(tupla_datos):
@@ -75,4 +80,4 @@ def editarTicket(tupla_datos):
             TIPO_RECLAMO = "{tupla_datos[4]}",
             RECLAMO = "{tupla_datos[5]}"
         WHERE ID = {identificador}''')
-    coneccion.commit()
+    conexion.commit()
