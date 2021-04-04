@@ -81,3 +81,5 @@ def editarTicket(tupla_datos):
             RECLAMO = "{tupla_datos[5]}"
         WHERE ID = {identificador}''')
     conexion.commit()
+    messagebox.showinfo('Ticket Actualizado', 'Los datos del ticket han sido actualizados con exito')
+

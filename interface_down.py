@@ -5,7 +5,7 @@ def createDownInterface(frame):
 
     bt_edit = Button(
         frame, 
-        text = 'EDITAR TICKET', 
+        text = 'GUARDAR CAMBIOS', 
         command = lambda:recolectarDatos('actualizar')
         )
     bt_edit.grid(
